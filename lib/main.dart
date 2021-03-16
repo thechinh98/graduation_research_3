@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: appThemeData,
         navigatorKey: NavigationService().navigationKey,
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: ROUTER_LIST_RESEARCH,
+        initialRoute: ROUTER_TIMETABLE,
       ),
     );
   }

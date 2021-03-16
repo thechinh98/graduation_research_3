@@ -1,38 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_graduation_research_3/screens/research_list/components/damn_research_list.dart';
+import 'package:flutter_graduation_research_3/screens/research_list/components/research_item_card.dart';
+import 'package:flutter_graduation_research_3/screens/research_list/components/tab_bar.dart';
+import 'package:flutter_graduation_research_3/shared/setting/constant.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> with SingleTickerProviderStateMixin {
+  List<Tab> researchTabList = [
+    Tab(
+      text: "ĐAMN ",
+    ),
+    Tab(
+      text: "ĐATN",
+    ),
+    Tab(
+      text: "ThS",
+    ),
+    Tab(
+      text: "TS",
+    ),
+  ];
+  TabController _tabController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _tabController = TabController(length: researchTabList.length, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      padding: EdgeInsets.only(top: 30, left: 10, right: 10, bottom: 5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey.withOpacity(0.2),
-      ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Học kỳ 20191",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              IconButton(
-                  icon: Icon(
-                    Icons.arrow_drop_down_circle_outlined,
-                    color: Colors.grey.withOpacity(0.7),
-                    size: 30,
-                  ),
-                  onPressed: () {}),
-            ],
+          ResearchScreenTabBar(researchTabList: researchTabList, tabController: _tabController),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: TabBarView(controller: _tabController, children: [
+              DamnResearchList(),
+              DamnResearchList(),
+              DamnResearchList(),
+              DamnResearchList(),
+            ]),
           )
         ],
       ),
     );
   }
 }
+

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graduation_research_3/screens/home/components/grid_list_item.dart';
-import 'package:flutter_graduation_research_3/shared/setting/constant.dart';
+import 'package:flutter_graduation_research_3/temp_data.dart';
 
 class Body extends StatelessWidget {
   @override
