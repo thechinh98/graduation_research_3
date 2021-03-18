@@ -4,12 +4,14 @@ import 'package:flutter_graduation_research_3/services/service_locator.dart';
 import 'package:flutter_graduation_research_3/shared/setting/app_router.dart';
 import 'package:flutter_graduation_research_3/shared/setting/constant.dart';
 import 'package:flutter_graduation_research_3/shared/setting/navigation_services.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   await AppProvider().init();
+  await initializeDateFormatting();
   runApp(MyApp());
 }
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: appThemeData,
         navigatorKey: NavigationService().navigationKey,
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: ROUTER_TIMETABLE,
+        initialRoute: ROUTER_CALENDAR,
       ),
     );
   }
