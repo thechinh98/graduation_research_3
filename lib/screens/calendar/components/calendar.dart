@@ -115,7 +115,7 @@ class _CustomCalendarState extends State<CustomCalendar>
       children: [
         _buildTableCalendarWithBuilders(),
         const SizedBox(height: 8.0),
-        Divider(thickness: 2, color: Colors.grey, indent: 150),
+        Divider(thickness: 2, color: Colors.grey, indent: 70),
         _buildEventList(),
       ],
     );
